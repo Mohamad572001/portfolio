@@ -103,7 +103,7 @@ export default function Header() {
                 <FaLinkedin />
               </a>
               <a
-                href="https://facebook.com/Mohamad Farhat"
+                href="https://facebook.com/mohamad.h.farhat2001"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
@@ -188,7 +188,7 @@ export default function Header() {
               <FaLinkedin />
             </a>
             <a
-              href="https://facebook.com/mohamadfarhat06.07.01@gmail.com"
+              href="https://facebook.com/mohamad.h.farhat2001"
               target="_blank"
               rel="noreferrer"
               aria-label="Facebook"
