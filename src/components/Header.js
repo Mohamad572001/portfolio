@@ -87,7 +87,7 @@ export default function Header() {
           <div className="nav-right">
             <div className="social desktopOnly" aria-label="Social links">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/Mohamad572001"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
@@ -95,7 +95,7 @@ export default function Header() {
                 <FaGithub />
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://linkedin.com/in/mohamad-farhat-j2001"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
@@ -103,7 +103,7 @@ export default function Header() {
                 <FaLinkedin />
               </a>
               <a
-                href="https://facebook.com/yourusername"
+                href="https://facebook.com/Mohamad Farhat"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
@@ -111,7 +111,7 @@ export default function Header() {
                 <FaFacebook />
               </a>
               <a
-                href="https://instagram.com/yourusername"
+                href="https://instagram.com/mohamad.h.farhat_"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
