@@ -1,7 +1,9 @@
 /* =======================
    RESET & BASE
 ======================= */
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -115,9 +117,7 @@ a {
   display: grid;
   place-items: center;
   cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .iconBtn:hover {
@@ -133,9 +133,7 @@ a {
 .social a {
   font-size: 18px;
   color: #c7d0ff;
-  transition:
-    transform 0.2s ease,
-    color 0.2s ease;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .social a:hover {
@@ -221,9 +219,6 @@ a {
 }
 
 @media (max-width: 900px) {
-  .nav {
-    grid-template-columns: auto 1fr auto;
-  }
   .nav-center {
     display: none;
   }
@@ -261,6 +256,7 @@ a {
 
 h1 {
   font-size: 42px;
+  margin: 0;
 }
 
 .accent {
@@ -276,17 +272,37 @@ h1 {
   margin-top: 20px;
 }
 
-/* Buttons */
+/* Buttons (base) */
 .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 10px 14px;
   border: 1px solid #1e2a55;
   border-radius: 8px;
-  margin-right: 10px;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(110, 168, 254, 0.55);
+}
+
+.btn:active {
+  transform: translateY(0px);
+  opacity: 0.95;
 }
 
 .primary {
   background: #6ea8fe;
   color: #000;
+}
+
+.btn-secondary {
+  background: #111827;
+  color: #ffffff;
 }
 
 /* Tech stack spacing */
@@ -311,7 +327,7 @@ section {
   gap: 15px;
 }
 
-/* KEEP YOUR CARD STYLE */
+/* Card style */
 .card {
   background: #111a33;
   padding: 20px;
@@ -319,7 +335,7 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* KEEP YOUR TAG STYLE */
+/* Tag style */
 .tags span {
   display: inline-block;
   background: #1e2a55;
@@ -380,10 +396,7 @@ section {
   position: relative;
   z-index: 2;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    filter 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
 }
 
 /* Hover glow */
@@ -410,28 +423,9 @@ section {
   }
 }
 
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .heroRight {
-    margin-top: 18px;
-  }
-  .avatarWrap {
-    width: 210px;
-    height: 210px;
-  }
-}
-
 /* =======================
    PROJECTS (CATEGORY CARDS + MODAL)
 ======================= */
-
-/* Category cards under Projects */
 .projectCategoryCard {
   cursor: pointer;
   transition: transform 0.2s ease;
@@ -514,9 +508,7 @@ section {
   color: #f1f5ff;
   cursor: pointer;
   font-size: 16px;
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .modalCloseBtn:hover {
@@ -588,15 +580,8 @@ section {
   }
 }
 
-/* Mobile modal height */
-@media (max-width: 900px) {
-  .modalCard {
-    max-height: 88vh;
-  }
-}
-
 /* =======================
-   ABOUT (GLASS + IMAGE + TIMELINE)
+   ABOUT (GLASS + IMAGE + TIMELINE + ACTIONS)
 ======================= */
 .glassCard {
   background: rgba(17, 26, 51, 0.55);
@@ -610,7 +595,7 @@ section {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: 22px;
-  align-items: stretch; /* allow image to stretch to card height */
+  align-items: stretch;
 }
 
 /* Image container (premium frame) */
@@ -621,12 +606,11 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.03);
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-
   height: 100%;
-  min-height: 420px; /* bigger and closer to card height */
+  min-height: 420px;
 }
 
-/* Gradient overlay for premium look */
+/* Gradient overlay */
 .aboutImgWrap::after {
   content: '';
   position: absolute;
@@ -655,7 +639,7 @@ section {
   pointer-events: none;
 }
 
-/* The image (fills the container height) */
+/* The image */
 .aboutImg {
   width: 100%;
   height: 100%;
@@ -665,12 +649,9 @@ section {
   display: block;
   transform: scale(1.03);
   filter: contrast(1.05) saturate(1.05);
-  transition:
-    transform 0.35s ease,
-    filter 0.35s ease;
+  transition: transform 0.35s ease, filter 0.35s ease;
 }
 
-/* Hover effect */
 .aboutImgWrap:hover .aboutImg {
   transform: scale(1.08);
   filter: contrast(1.08) saturate(1.1);
@@ -705,6 +686,14 @@ section {
 
 .aboutActions {
   margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap; /* allows buttons to wrap on medium screens */
+}
+
+/* Make About buttons consistent (desktop) */
+.aboutActions .btn {
+  margin-right: 0; /* override old margin-right behavior */
 }
 
 /* Timeline */
@@ -775,16 +764,55 @@ section {
   line-height: 1.55;
 }
 
-/* Responsive */
+/* =======================
+   RESPONSIVE
+======================= */
 @media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroRight {
+    margin-top: 18px;
+  }
+
+  .avatarWrap {
+    width: 210px;
+    height: 210px;
+  }
+
+  .modalCard {
+    max-height: 88vh;
+  }
+
   .aboutWrap {
     grid-template-columns: 1fr;
   }
+
   .aboutImgWrap {
     min-height: 260px;
   }
+
   .aboutImg {
     min-height: 260px;
     max-height: 320px;
+  }
+}
+
+/* About actions: mobile-friendly full-width buttons */
+@media (max-width: 768px) {
+  .aboutActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .aboutActions .btn {
+    width: 100%;
+    padding: 0.9rem 1.25rem;
+    font-size: 1rem;
   }
 }

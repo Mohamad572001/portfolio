@@ -80,7 +80,7 @@ export default function About() {
                 rel="noopener noreferrer"
                 className="btn btn-secondary"
                 >
-            CV
+              📄 CV
             </a>
           </div>
         </div>
