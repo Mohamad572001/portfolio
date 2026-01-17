@@ -20,7 +20,7 @@ export default function Hero() {
           <a href="#contact" className="btn primary">Contact Me</a>
           <a href="#projects" className="btn">View Projects</a>
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/Mohamad572001"
             className="btn"
             target="_blank"
             rel="noreferrer"
@@ -40,6 +40,8 @@ export default function Hero() {
             <span>MySQL</span>
             <span>Bootstrap</span>
             <span>AJAX</span>
+            <span>Java</span>
+            <span>Flutter(Basic)</span>
             <span>React (Basic)</span>
             <span>Node.js (Basic)</span>
           </div>
@@ -49,7 +51,7 @@ export default function Hero() {
       {/* RIGHT: Avatar only */}
       <div className="heroRight">
         <div className="avatarWrap">
-          <img className="avatar" src={profileImg} alt="Your Name" />
+          <img className="avatar" src={profileImg} alt="Mohamad Farhat" />
         </div>
       </div>
     </section>
