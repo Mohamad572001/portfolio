@@ -1,7 +1,7 @@
-import "./index.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Home from "./pages/Home";
+import './index.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
 
 export default function App() {
   return (
@@ -12,4 +12,3 @@ export default function App() {
     </>
   );
 }
-

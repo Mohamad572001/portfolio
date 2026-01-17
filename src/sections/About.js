@@ -1,6 +1,4 @@
-
-import aboutImg from "../assets/about-me-color.jpg";
-
+import aboutImg from '../assets/about-me-color.jpg';
 
 export default function About() {
   return (
@@ -18,9 +16,10 @@ export default function About() {
           <h3 className="aboutTitle">Mohamad Farhat</h3>
 
           <p className="aboutText">
-            I’m a Full Stack Developer focused on building real-world web applications.
-            I enjoy working across frontend and backend, creating clean UI, secure systems,
-            and practical features like product management, auctions, dashboards, and authentication.
+            I’m a Full Stack Developer focused on building real-world web
+            applications. I enjoy working across frontend and backend, creating
+            clean UI, secure systems, and practical features like product
+            management, auctions, dashboards, and authentication.
           </p>
 
           <div className="aboutHighlights">
@@ -43,8 +42,8 @@ export default function About() {
                   <span className="timelineDate">2023 – 2026</span>
                 </div>
                 <p className="timelineText">
-                  Information Systems / Software Development — focus on web development, databases,
-                  system analysis, and project building.
+                  Information Systems / Software Development — focus on web
+                  development, databases, system analysis, and project building.
                 </p>
               </div>
             </div>
@@ -57,8 +56,9 @@ export default function About() {
                   <span className="timelineDate">2025 – 2026</span>
                 </div>
                 <p className="timelineText">
-                  Built <b>Craftify</b>, a full-stack marketplace with auctions, seller dashboards,
-                  and admin management using PHP, MySQL, JavaScript, Bootstrap, and AJAX.
+                  Built <b>Craftify</b>, a full-stack marketplace with auctions,
+                  seller dashboards, and admin management using PHP, MySQL,
+                  JavaScript, Bootstrap, and AJAX.
                 </p>
               </div>
             </div>
@@ -68,8 +68,12 @@ export default function About() {
           </div>
 
           <div className="aboutActions">
-            <a className="btn primary" href="#contact">Contact Me</a>
-            <a className="btn" href="#projects">View Projects</a>
+            <a className="btn primary" href="#contact">
+              Contact Me
+            </a>
+            <a className="btn" href="#projects">
+              View Projects
+            </a>
           </div>
         </div>
       </div>

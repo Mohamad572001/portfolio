@@ -1,17 +1,17 @@
-import { useEffect, useMemo, useState } from "react";
-import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from "react-icons/fa";
-import { FiMenu, FiX } from "react-icons/fi";
+import { useEffect, useMemo, useState } from 'react';
+import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa';
+import { FiMenu, FiX } from 'react-icons/fi';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [active, setActive] = useState("projects");
+  const [active, setActive] = useState('projects');
 
   const sections = useMemo(
     () => [
-      { id: "projects", label: "Projects" },
-      { id: "skills", label: "Skills" },
-      { id: "about", label: "About" },
-      { id: "contact", label: "Contact" },
+      { id: 'projects', label: 'Projects' },
+      { id: 'skills', label: 'Skills' },
+      { id: 'about', label: 'About' },
+      { id: 'contact', label: 'Contact' },
     ],
     []
   );
@@ -20,7 +20,7 @@ export default function Header() {
   useEffect(() => {
     const getActiveSection = () => {
       const offset = 110; // header height offset
-      let current = sections[0]?.id || "projects";
+      let current = sections[0]?.id || 'projects';
 
       for (const s of sections) {
         const el = document.getElementById(s.id);
@@ -34,24 +34,24 @@ export default function Header() {
     };
 
     getActiveSection();
-    window.addEventListener("scroll", getActiveSection, { passive: true });
-    return () => window.removeEventListener("scroll", getActiveSection);
+    window.addEventListener('scroll', getActiveSection, { passive: true });
+    return () => window.removeEventListener('scroll', getActiveSection);
   }, [sections]);
 
   // Close menu on escape
   useEffect(() => {
     const onKeyDown = (e) => {
-      if (e.key === "Escape") setIsMenuOpen(false);
+      if (e.key === 'Escape') setIsMenuOpen(false);
     };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
   }, []);
 
   const goTo = (id) => {
     setIsMenuOpen(false);
     document.getElementById(id)?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
+      behavior: 'smooth',
+      block: 'start',
     });
   };
 
@@ -62,7 +62,7 @@ export default function Header() {
           {/* LEFT */}
           <div
             className="brand"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             role="button"
             tabIndex={0}
           >
@@ -74,7 +74,7 @@ export default function Header() {
             {sections.map((s) => (
               <button
                 key={s.id}
-                className={`navLink ${active === s.id ? "active" : ""}`}
+                className={`navLink ${active === s.id ? 'active' : ''}`}
                 onClick={() => goTo(s.id)}
                 type="button"
               >
@@ -135,11 +135,14 @@ export default function Header() {
 
       {/* Mobile overlay + slide-in drawer */}
       <div
-        className={`menuOverlay ${isMenuOpen ? "show" : ""}`}
+        className={`menuOverlay ${isMenuOpen ? 'show' : ''}`}
         onClick={() => setIsMenuOpen(false)}
       />
 
-      <aside className={`mobileMenu ${isMenuOpen ? "open" : ""}`} aria-hidden={!isMenuOpen}>
+      <aside
+        className={`mobileMenu ${isMenuOpen ? 'open' : ''}`}
+        aria-hidden={!isMenuOpen}
+      >
         <div className="mobileMenuTop">
           <div className="brand">Portfolio.</div>
 
@@ -157,7 +160,7 @@ export default function Header() {
           {sections.map((s) => (
             <button
               key={s.id}
-              className={`mobileLink ${active === s.id ? "active" : ""}`}
+              className={`mobileLink ${active === s.id ? 'active' : ''}`}
               onClick={() => goTo(s.id)}
               type="button"
             >
@@ -177,7 +180,7 @@ export default function Header() {
               <FaGithub />
             </a>
             <a
-              href="https://linkedin.com/in/Mohamad Farhat"
+              href="https://linkedin.com/in/mohamad-farhat-j2001"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"

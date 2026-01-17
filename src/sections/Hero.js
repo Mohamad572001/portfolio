@@ -1,4 +1,4 @@
-import profileImg from "../assets/profile.jpg";
+import profileImg from '../assets/profile.jpg';
 
 export default function Hero() {
   return (
@@ -11,14 +11,18 @@ export default function Hero() {
         </h1>
 
         <p className="subtitle">
-            Full Stack Developer specializing in HTML, CSS, JavaScript, and PHP.
-            I have beginner experience with React and Node.js and enjoy building
-            real-world applications with clean, practical solutions.
+          Full Stack Developer specializing in HTML, CSS, JavaScript, and PHP. I
+          have beginner experience with React and Node.js and enjoy building
+          real-world applications with clean, practical solutions.
         </p>
 
         <div className="buttons">
-          <a href="#contact" className="btn primary">Contact Me</a>
-          <a href="#projects" className="btn">View Projects</a>
+          <a href="#contact" className="btn primary">
+            Contact Me
+          </a>
+          <a href="#projects" className="btn">
+            View Projects
+          </a>
           <a
             href="https://github.com/Mohamad572001"
             className="btn"
