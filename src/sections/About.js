@@ -75,7 +75,7 @@ export default function About() {
               View Projects
             </a>
             <a
-                href="/Mohamad_Farhat_Resume.docx"
+                href="/Mohamad_Farhat_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary"
