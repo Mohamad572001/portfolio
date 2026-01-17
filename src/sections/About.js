@@ -74,6 +74,14 @@ export default function About() {
             <a className="btn" href="#projects">
               View Projects
             </a>
+            <a
+                href="/Mohamad_Farhat_Resume.docx"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+                >
+            CV
+            </a>
           </div>
         </div>
       </div>
