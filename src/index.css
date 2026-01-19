@@ -346,6 +346,71 @@ section {
 }
 
 /* =======================
+   SKILLS (PROGRESS BARS)
+   (Scoped so it won't affect other sections)
+======================= */
+#skills h2 {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+#skills .card h4 {
+  margin: 0 0 14px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+}
+
+#skills .skill {
+  margin-bottom: 12px;
+}
+
+#skills .skill:last-child {
+  margin-bottom: 0;
+}
+
+#skills .skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #c7d0ff;
+  font-weight: 800;
+}
+
+#skills .skill-header span:last-child {
+  color: #f1f5ff;
+  font-weight: 900;
+}
+
+#skills .progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+#skills .progress {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6ea8fe, #a78bfa);
+  transition: width 0.45s ease;
+}
+
+/* Optional: small hover lift for skills cards */
+#skills .card {
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+#skills .card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(110, 168, 254, 0.35);
+}
+
+/* =======================
    FOOTER
 ======================= */
 .footer {
@@ -688,12 +753,12 @@ section {
   margin-top: 18px;
   display: flex;
   gap: 12px;
-  flex-wrap: wrap; /* allows buttons to wrap on medium screens */
+  flex-wrap: wrap;
 }
 
 /* Make About buttons consistent (desktop) */
 .aboutActions .btn {
-  margin-right: 0; /* override old margin-right behavior */
+  margin-right: 0;
 }
 
 /* Timeline */
@@ -816,6 +881,7 @@ section {
     font-size: 1rem;
   }
 }
+
 /* =======================
    CONTACT (PRO FORM)
 ======================= */
@@ -942,3 +1008,4 @@ section {
     gap: 6px;
   }
 }
+
