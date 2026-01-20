@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 
+// ✅ 1) Import your images (after you add them in src/assets/...)
+import tz1 from '../assets/timezone1.png';
+import tz2 from '../assets/timezone2.png';
+
 export default function Projects() {
   const categories = [
     {
@@ -21,17 +25,24 @@ export default function Projects() {
         // Add more web projects here...
       ],
     },
-    {
+     {
       id: 'mobile',
-      title: 'Mobile',
-      desc: 'Mobile apps and prototypes (add your tech here).',
+      title: 'Mobile Application',
+      desc: 'Mobile apps and prototypes.',
       projects: [
         {
-          name: 'Coming Soon',
-          tech: '—',
+          name: 'TimeZone Tracker (Flutter + PHP)',
+          tech: 'Flutter, PHP, REST API',
           details:
-            'Add your mobile projects here (Android / Flutter / React Native).',
-          links: { github: '', live: '' },
+            'A mobile app that displays the current date and time for selected cities. Built with Flutter for the UI and a PHP backend for data/API handling. Users can select a city from a dropdown and view the live time with a city image.',
+          links: {
+            github: 'https://github.com/Mohamad572001/TimezoneTracker.git', // add later if you want
+            live: '',   // mobile apps usually don’t have a live demo link
+          },
+          images: [
+            { src: tz1, alt: 'TimeZone Tracker - Select city dropdown' },
+            { src: tz2, alt: 'TimeZone Tracker - Berlin screen' },
+          ],
         },
       ],
     },
