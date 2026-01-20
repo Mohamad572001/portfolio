@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
 // ✅ 1) Import your images (after you add them in src/assets/...)
-import tz1 from '../assets/timezone1.png';
-import tz2 from '../assets/timezone2.png';
+import tz1 from '../assets/Timezone1.png';
+import tz2 from '../assets/Timezone2.png';
 
 export default function Projects() {
   const categories = [
