@@ -144,7 +144,25 @@ export default function Projects() {
                   <h4 className="modalProjectTitle">{p.name}</h4>
                   <div className="modalProjectTech">{p.tech}</div>
 
+                  
                   <p className="modalProjectDetails">{p.details}</p>
+
+                  {p.images?.length ? (
+                  <div className="projectGallery">
+                  {p.images.map((img) => (
+                  <a
+                    key={img.alt}
+                    href={img.src}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="projectShot"
+                    title="Open image"
+                  >
+                  <img src={img.src} alt={img.alt} />
+                  </a>
+              ))}
+            </div>
+            ) : null}
 
                   <div className="modalLinks">
                     {p.links.github ? (
