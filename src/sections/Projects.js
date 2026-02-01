@@ -17,7 +17,7 @@ export default function Projects() {
           details:
             'Craftify is a full-stack handmade goods marketplace featuring direct purchasing and real-time auctions. It supports buyers, sellers, and administrators with role-based dashboards, product and auction management, and a responsive user experience built using PHP, MySQL, JavaScript, Bootstrap, and AJAX.',
           links: {
-            github: 'https://github.com/yourusername/craftify',
+            
             'Live Demo': 'https://proemployer-unchecked-anabelle.ngrok-free.dev/isd/home.php',
             live: 'https://proemployer-unchecked-anabelle.ngrok-free.dev/isd/home.php',
           },

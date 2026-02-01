@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 export default function Contact() {
   const myEmail = 'mohamadfarhat05.07.01@gmail.com';
   const githubUrl = 'https://github.com/Mohamad572001';
+  const linkedinUrl = 'https://linkedin.com/in/mohamad-farhat-j2001';
 
   const [form, setForm] = useState({
     name: '',
@@ -109,12 +110,11 @@ export default function Contact() {
               <span className="contactLabel">LinkedIn</span>
               <a
                 className="contactLink"
-                href="#"
-                onClick={(e) => e.preventDefault()}
-                aria-disabled="true"
-                title="Add your LinkedIn URL here"
+                href={linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Add your LinkedIn URL
+                Mohamad Farhat
               </a>
             </div>
           </div>
