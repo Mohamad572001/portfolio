@@ -55,7 +55,9 @@ export default function Hero() {
       {/* RIGHT: Avatar only */}
       <div className="heroRight">
         <div className="avatarWrap">
+          <div className="avatarInner">
           <img className="avatar" src={profileImg} alt="Mohamad Farhat" />
+          </div>
         </div>
       </div>
     </section>
