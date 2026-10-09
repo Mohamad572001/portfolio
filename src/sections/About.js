@@ -75,7 +75,7 @@ export default function About() {
               View Projects
             </a>
             <a
-                href={`${process.env.PUBLIC_URL}/Mohamad_Farhat_Resume.pdf`}
+                href={`${process.env.PUBLIC_URL}/CV_Mohamad_Farhat.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary"
