@@ -1,61 +1,101 @@
+import { useLanguage } from '../context/LanguageContext';
+
 export default function Skills() {
+  const { isGerman } = useLanguage();
+
+  const groups = isGerman
+    ? [
+        [
+          'Webentwicklung',
+          ['HTML', 'CSS', 'JavaScript', 'PHP', 'Bootstrap', 'AJAX'],
+        ],
+        [
+          'Datenbanken',
+          ['MySQL', 'SQL', 'Relationale Datenmodellierung'],
+        ],
+        [
+          'Entwicklungsumgebungen',
+          ['Visual Studio Code', 'Visual Studio', 'XAMPP', 'GitHub'],
+        ],
+        [
+          'Softwaretesting · Selbststudium',
+          [
+            'Testfallentwurf',
+            'Äquivalenzklassenbildung',
+            'Grenzwertanalyse',
+            'Entscheidungstabellentest',
+            'Reviews',
+            'Fehleranalyse',
+            'Regressionstests',
+          ],
+        ],
+        [
+          'Weitere Kenntnisse',
+          ['React.js · Grundkenntnisse', '.NET · Grundkenntnisse'],
+        ],
+      ]
+    : [
+        [
+          'Web Development',
+          ['HTML', 'CSS', 'JavaScript', 'PHP', 'Bootstrap', 'AJAX'],
+        ],
+        [
+          'Databases',
+          ['MySQL', 'SQL', 'Relational data modelling'],
+        ],
+        [
+          'Development Environments',
+          ['Visual Studio Code', 'Visual Studio', 'XAMPP', 'GitHub'],
+        ],
+        [
+          'Software Testing · Self-study',
+          [
+            'Test case design',
+            'Equivalence partitioning',
+            'Boundary value analysis',
+            'Decision table testing',
+            'Reviews',
+            'Defect analysis',
+            'Regression testing',
+          ],
+        ],
+        [
+          'Additional Exposure',
+          ['React.js · Basic exposure', '.NET · Basic exposure'],
+        ],
+      ];
+
   return (
     <section id="skills">
-      <h2>Technical Skills</h2>
+      <div className="sectionHeading">
+        <span className="sectionEyebrow">
+          {isGerman ? 'Technische Kompetenzen' : 'Technical Competencies'}
+        </span>
 
-      <div className="grid">
-        <div className="card">
-          <h4>Frontend</h4>
-          <Skill name="HTML" percent={85} icon="devicon-html5-plain" />
-          <Skill name="CSS" percent={70} icon="devicon-css3-plain" />
-          <Skill name="JavaScript" percent={75} icon="devicon-javascript-plain" />
-          <Skill name="React" percent={60} icon="devicon-react-original" />
-          <Skill name="Bootstrap (Basic)" percent={55} icon="devicon-bootstrap-plain" />
-          <Skill name="AJAX (Basic)" percent={55} icon="devicon-jquery-plain" />
-        </div>
+        <h2>
+          {isGerman ? 'Technische Kenntnisse' : 'Technical Skills'}
+        </h2>
 
-        <div className="card">
-          <h4>Backend</h4>
-          <Skill name="PHP" percent={70} icon="devicon-php-plain" />
-          <Skill name="Node.js" percent={60} icon="devicon-nodejs-plain" />
-        </div>
+        <p>
+          {isGerman
+            ? 'Technische Kenntnisse entsprechend meinem aktuellen Lebenslauf und meiner praktischen Erfahrung.'
+            : 'Technical skills aligned with my current CV and practical experience.'}
+        </p>
+      </div>
 
-        <div className="card">
-          <h4>Programming Languages</h4>
-          <Skill name="Java" percent={70} icon="devicon-java-plain" />
-          <Skill name="Python" percent={70} icon="devicon-python-plain" />
-          <Skill name="C#" percent={55} icon="devicon-csharp-plain" />
-          <Skill name="Flutter (Dart)" percent={60} icon="devicon-flutter-plain" />
-        </div>
+      <div className="skillsGridUpdated">
+        {groups.map(([title, items]) => (
+          <article className="card skillGroupCard" key={title}>
+            <h3>{title}</h3>
 
-        <div className="card">
-          <h4>Tools & Environment</h4>
-          <Skill name="MySQL / phpMyAdmin" percent={75} icon="devicon-mysql-plain" />
-          <Skill name="XAMPP" percent={80} icon="devicon-apache-plain" />
-          <Skill name="VS Code" percent={85} icon="devicon-vscode-plain" />
-          <Skill name="NetBeans (Java)" percent={65} icon="devicon-apache-plain" />
-        </div>
+            <div className="tags">
+              {items.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );
 }
-
-function Skill({ name, percent, icon }) {
-  return (
-    <div className="skill">
-      <div className="skill-header">
-        <div className="skill-left">
-          <i className={`skill-icon ${icon}`} aria-hidden="true"></i>
-          <span>{name}</span>
-        </div>
-        <span>{percent}%</span>
-      </div>
-
-      <div className="progress-bar">
-        <div className="progress" style={{ width: `${percent}%` }} />
-      </div>
-    </div>
-  );
-}
-
-

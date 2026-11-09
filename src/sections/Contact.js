@@ -1,10 +1,12 @@
-// src/sections/Contact.js
 import { useMemo, useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Contact() {
-  const myEmail = 'mohamadfarhat05.07.01@gmail.com';
+  const { isGerman } = useLanguage();
+
+  const emailAddress = 'mohamad-farhat@mail.de';
   const githubUrl = 'https://github.com/Mohamad572001';
-  const linkedinUrl = 'https://linkedin.com/in/mohamad-farhat-j2001';
+  const linkedinUrl = 'https://linkedin.com/in/mohamad-farhat-J2001';
 
   const [form, setForm] = useState({
     name: '',
@@ -13,199 +15,241 @@ export default function Contact() {
     message: '',
   });
 
-  const [status, setStatus] = useState({ type: '', msg: '' });
-  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState('');
 
-  const mailtoHref = useMemo(() => {
-    const subject = encodeURIComponent(form.subject || 'Portfolio message');
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
+  const mailto = useMemo(() => {
+    const subject = encodeURIComponent(
+      form.subject ||
+        (isGerman
+          ? 'Nachricht über mein Portfolio'
+          : 'Message from my portfolio')
     );
-    return `mailto:${myEmail}?subject=${subject}&body=${body}`;
-  }, [form, myEmail]);
 
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-    if (status.msg) setStatus({ type: '', msg: '' });
+    const body = encodeURIComponent(
+      `${isGerman ? 'Name' : 'Name'}: ${form.name}
+Email: ${form.email}
+
+${isGerman ? 'Nachricht' : 'Message'}:
+${form.message}`
+    );
+
+    return `mailto:${emailAddress}?subject=${subject}&body=${body}`;
+  }, [form, isGerman]);
+
+  const labels = isGerman
+    ? {
+        eyebrow: 'Kontakt',
+        title: 'Kontakt',
+        intro:
+          'Du möchtest über eine Junior-Stelle, ein Praktikum, ein Traineeprogramm oder ein Projekt sprechen? Kontaktiere mich gerne.',
+        name: 'Name',
+        email: 'E-Mail',
+        subject: 'Betreff',
+        message: 'Nachricht',
+        send: 'Nachricht vorbereiten',
+        success:
+          'Dein E-Mail-Programm wurde mit einer vorbereiteten Nachricht geöffnet.',
+        error: 'Bitte fülle alle Felder korrekt aus.',
+        direct: 'Direkter Kontakt',
+        note:
+          'Das Formular öffnet dein E-Mail-Programm. Die Nachricht wird nicht automatisch versendet.',
+      }
+    : {
+        eyebrow: 'Contact',
+        title: 'Get in touch',
+        intro:
+          'Interested in discussing a junior position, internship, trainee opportunity or project? Feel free to contact me.',
+        name: 'Name',
+        email: 'Email',
+        subject: 'Subject',
+        message: 'Message',
+        send: 'Prepare message',
+        success:
+          'Your email application has been opened with a prepared message.',
+        error: 'Please complete all fields correctly.',
+        direct: 'Direct contact',
+        note:
+          'This form opens your email application. The message is not sent automatically.',
+      };
+
+  const change = (event) => {
+    setForm((previous) => ({
+      ...previous,
+      [event.target.name]: event.target.value,
+    }));
+
+    if (status) {
+      setStatus('');
+    }
   };
 
-  const validate = () => {
-    if (!form.name.trim()) return 'Please enter your name.';
-    if (!form.email.trim()) return 'Please enter your email.';
-    // simple email validation
-    if (!/^\S+@\S+\.\S+$/.test(form.email.trim()))
-      return 'Please enter a valid email address.';
-    if (!form.subject.trim()) return 'Please enter a subject.';
-    if (!form.message.trim()) return 'Please write your message.';
-    if (form.message.trim().length < 15)
-      return 'Message is too short (min 15 characters).';
-    return '';
-  };
+  const submit = (event) => {
+    event.preventDefault();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const err = validate();
-    if (err) {
-      setStatus({ type: 'error', msg: err });
+    const validEmail = /^\S+@\S+\.\S+$/.test(form.email.trim());
+
+    if (
+      !form.name.trim() ||
+      !validEmail ||
+      !form.subject.trim() ||
+      !form.message.trim()
+    ) {
+      setStatus('error');
       return;
     }
 
-    // Professional + zero-backend default:
-    // open user's email client with a prefilled email
-    setLoading(true);
-    try {
-      window.open(mailtoHref, '_blank', 'noopener,noreferrer');
-      setStatus({
-        type: 'success',
-        msg: 'Your email app opened with the message ready. Send it and I’ll reply soon.',
-      });
-
-      setForm({ name: '', email: '', subject: '', message: '' });
-    } catch {
-      setStatus({
-        type: 'error',
-        msg: 'Could not open your email app. Please email me directly.',
-      });
-    } finally {
-      setLoading(false);
-    }
+    window.location.href = mailto;
+    setStatus('success');
   };
 
   return (
     <section id="contact">
-      <h2>Contact</h2>
+      <div className="sectionHeading">
+        <span className="sectionEyebrow">
+          {labels.eyebrow}
+        </span>
+
+        <h2>{labels.title}</h2>
+
+        <p>{labels.intro}</p>
+      </div>
 
       <div className="card glassCard contactWrap">
-        {/* Left: info */}
         <div className="contactInfo">
-          <h3 className="contactTitle">Let’s work together</h3>
-          <p className="contactText">
-            Have a question or want to collaborate? Send me a message and I’ll
-            get back to you as soon as possible.
-          </p>
+          <h3>{labels.direct}</h3>
 
           <div className="contactLinks">
             <div className="contactRow">
               <span className="contactLabel">Email</span>
-              <a className="contactLink" href={`mailto:${myEmail}`}>
-                {myEmail}
+
+              <a
+                className="contactLink"
+                href={`mailto:${emailAddress}`}
+              >
+                {emailAddress}
               </a>
             </div>
 
             <div className="contactRow">
               <span className="contactLabel">GitHub</span>
+
               <a
                 className="contactLink"
                 href={githubUrl}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
               >
                 Mohamad572001
               </a>
             </div>
 
-            {/* Optional: add LinkedIn later by replacing '#' with your URL */}
             <div className="contactRow">
-              <span className="contactLabel">LinkedIn</span>
+              <span className="contactLabel">
+                LinkedIn
+              </span>
+
               <a
                 className="contactLink"
                 href={linkedinUrl}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
               >
                 Mohamad Farhat
               </a>
             </div>
           </div>
 
-          <div className="contactNote">
-            <p className="contactSmall">
-              Prefer email? Just click my address above.
-            </p>
-          </div>
+          <p className="contactSmall">
+            {labels.note}
+          </p>
         </div>
 
-        {/* Right: form */}
-        <form className="contactForm" onSubmit={handleSubmit}>
+        <form
+          className="contactForm"
+          onSubmit={submit}
+        >
           <div className="formRow">
             <div className="field">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">
+                {labels.name}
+              </label>
+
               <input
                 id="name"
                 name="name"
                 type="text"
-                placeholder="Your name"
                 value={form.name}
-                onChange={onChange}
-                autoComplete="name"
+                onChange={change}
                 required
               />
             </div>
 
             <div className="field">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">
+                {labels.email}
+              </label>
+
               <input
                 id="email"
                 name="email"
                 type="email"
-                placeholder="you@email.com"
                 value={form.email}
-                onChange={onChange}
-                autoComplete="email"
+                onChange={change}
                 required
               />
             </div>
           </div>
 
           <div className="field">
-            <label htmlFor="subject">Subject</label>
+            <label htmlFor="subject">
+              {labels.subject}
+            </label>
+
             <input
               id="subject"
               name="subject"
               type="text"
-              placeholder="What is this about?"
               value={form.subject}
-              onChange={onChange}
+              onChange={change}
               required
             />
           </div>
 
           <div className="field">
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">
+              {labels.message}
+            </label>
+
             <textarea
               id="message"
               name="message"
               rows="6"
-              placeholder="Write your message..."
               value={form.message}
-              onChange={onChange}
+              onChange={change}
               required
             />
           </div>
 
-          <button className="btn primary" type="submit" disabled={loading}>
-            {loading ? 'Opening Email…' : 'Send Message'}
+          <button
+            className="btn primary"
+            type="submit"
+          >
+            {labels.send}
           </button>
 
-          {status.msg && (
-            <p
-              className={`formStatus ${status.type}`}
-              role="status"
-              aria-live="polite"
-            >
-              {status.msg}
+          {status === 'success' && (
+            <p className="formStatus success">
+              {labels.success}
             </p>
           )}
 
-          <p className="contactSmall">
-            Note: This form opens your email app with the message pre-filled.
-            If you want “real sending” directly from the website, tell me and
-            I’ll set up EmailJS or Formspree.
-          </p>
+          {status === 'error' && (
+            <p className="formStatus error">
+              {labels.error}
+            </p>
+          )}
         </form>
       </div>
     </section>
   );
 }
-
